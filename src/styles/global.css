@@ -254,6 +254,7 @@ main {
 /* Hero */
 .hero {
   position: relative;
+  isolation: isolate;
   background:
     radial-gradient(120% 80% at 20% 0%, rgba(199, 154, 82, 0.12), transparent 60%),
     repeating-linear-gradient(135deg, rgba(239, 231, 214, 0.045) 0, rgba(239, 231, 214, 0.045) 1px, transparent 1px, transparent 12px),
@@ -267,11 +268,12 @@ main {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("/berg-buben-logo.png") no-repeat center;
-  background-size: min(760px, 80%) auto;
-  opacity: 0.3;
+  background: url("/berg-buben-emblem.png") no-repeat center 40%;
+  background-size: min(1000px, 94%) auto;
+  opacity: 0.8;
+  mix-blend-mode: soft-light;
   pointer-events: none;
-  animation: heroLogo 20s ease-in-out infinite alternate;
+  animation: heroLogo 22s ease-in-out infinite alternate;
 }
 
 .hero::after {
