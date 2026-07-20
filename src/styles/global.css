@@ -254,7 +254,10 @@ main {
 /* Hero */
 .hero {
   position: relative;
-  background: linear-gradient(180deg, #244133 0%, var(--fir-deep) 62%, var(--fir-darker) 100%);
+  background:
+    radial-gradient(120% 80% at 20% 0%, rgba(199, 154, 82, 0.12), transparent 60%),
+    repeating-linear-gradient(135deg, rgba(239, 231, 214, 0.045) 0, rgba(239, 231, 214, 0.045) 1px, transparent 1px, transparent 12px),
+    linear-gradient(180deg, #244133 0%, var(--fir-deep) 62%, var(--fir-darker) 100%);
   color: var(--paper);
   overflow: hidden;
 }
@@ -263,10 +266,12 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(120% 80% at 20% 0%, rgba(199, 154, 82, 0.12), transparent 60%),
-    repeating-linear-gradient(135deg, rgba(239, 231, 214, 0.045) 0, rgba(239, 231, 214, 0.045) 1px, transparent 1px, transparent 12px);
+  z-index: 0;
+  background: url("/berg-buben-logo.png") no-repeat center;
+  background-size: min(760px, 80%) auto;
+  opacity: 0.3;
   pointer-events: none;
+  animation: heroLogo 20s ease-in-out infinite alternate;
 }
 
 .hero::after {
@@ -275,6 +280,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 0;
   height: 190px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200' preserveAspectRatio='none'%3E%3Cpath fill='%23112019' d='M0 200 L0 128 L110 70 L230 118 L350 55 L470 112 L590 42 L720 104 L840 60 L965 116 L1085 62 L1205 110 L1320 58 L1440 104 L1440 200 Z'/%3E%3Cpath fill='%230d1a14' opacity='0.85' d='M0 200 L0 160 L150 118 L300 158 L440 120 L590 160 L740 122 L880 158 L1020 124 L1160 160 L1300 126 L1440 158 L1440 200 Z'/%3E%3C/svg%3E");
   background-size: cover;
@@ -851,6 +857,15 @@ main {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes heroLogo {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.06) translateY(-10px);
   }
 }
 

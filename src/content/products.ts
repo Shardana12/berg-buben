@@ -1,5 +1,4 @@
 import type { Locale } from "../i18n";
-import { shopBaseUrl } from "../config/site";
 
 export type Block =
   | { type: "p"; text: string }
