@@ -1,0 +1,37 @@
+{
+  "nav": { "home": "Start", "sorten": "Sorten" },
+  "actions": {
+    "buyInShop": "Im Shop kaufen",
+    "readStory": "Zur Geschichte",
+    "back": "Zurück zur Übersicht",
+    "allProducts": "Alle Sorten"
+  },
+  "labels": {
+    "steckbrief": "Steckbrief",
+    "published": "Veröffentlicht",
+    "category": "Kategorie",
+    "weight": "Gewicht",
+    "story": "Die Geschichte"
+  },
+  "seal": { "text": "Gepresst · Geräuchert · Getrocknet" },
+  "footer": {
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "rights": "Alle Rechte vorbehalten.",
+    "shopLabel": "Direkt im Shop kaufen"
+  },
+  "home": {
+    "sortenEyebrow": "Unsere Sorten",
+    "sortenTitle": "Handgemachte Rohwurst, ehrlich erzählt"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "text": "Diese Seite gibt es nicht mehr oder wurde verschoben.",
+    "cta": "Zur Startseite"
+  },
+  "legal": {
+    "imprintTitle": "Impressum",
+    "privacyTitle": "Datenschutzerklärung",
+    "placeholder": "Dieser Bereich wird noch mit den rechtlich verbindlichen Angaben befüllt."
+  }
+}

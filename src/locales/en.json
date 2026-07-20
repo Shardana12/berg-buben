@@ -1,0 +1,37 @@
+{
+  "nav": { "home": "Home", "sorten": "Varieties" },
+  "actions": {
+    "buyInShop": "Buy in the shop",
+    "readStory": "Read the story",
+    "back": "Back to all varieties",
+    "allProducts": "All varieties"
+  },
+  "labels": {
+    "steckbrief": "At a glance",
+    "published": "Published",
+    "category": "Category",
+    "weight": "Weight",
+    "story": "The story"
+  },
+  "seal": { "text": "Pressed - Smoked - Air-dried" },
+  "footer": {
+    "imprint": "Legal notice",
+    "privacy": "Privacy",
+    "rights": "All rights reserved.",
+    "shopLabel": "Buy directly in the shop"
+  },
+  "home": {
+    "sortenEyebrow": "Our varieties",
+    "sortenTitle": "Hand-made dry sausage, honestly told"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page no longer exists or has been moved.",
+    "cta": "Back to home"
+  },
+  "legal": {
+    "imprintTitle": "Legal notice",
+    "privacyTitle": "Privacy policy",
+    "placeholder": "This section still needs to be filled with the legally required information."
+  }
+}
