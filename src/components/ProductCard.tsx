@@ -4,6 +4,7 @@ import type { Locale } from "../i18n";
 import type { Product } from "../content/products";
 import { withLocale } from "../lib/paths";
 import ProductImage from "./ProductImage";
+import BlockText from "./BlockText";
 
 interface ProductCardProps {
   product: Product;
@@ -15,21 +16,31 @@ export default function ProductCard({ product }: ProductCardProps) {
   const to = withLocale(lang, `/produkt/${product.slug}`);
 
   return (
-    <article className="card">
-      <Link to={to} className="card__media">
+    <Link to={to} className="poster" aria-label={product.name[lang]}>
+      <div className="poster__media">
         <ProductImage src={product.imageUrl} alt={product.name[lang]} />
-        <span className="card__weight">{product.weight}</span>
-      </Link>
-      <div className="card__body">
-        <p className="eyebrow">{product.category[lang]}</p>
-        <h3 className="card__title">
-          <Link to={to}>{product.name[lang]}</Link>
-        </h3>
-        <p className="card__excerpt">{product.excerpt[lang]}</p>
-        <Link to={to} className="link-arrow">
-          {t("actions.readStory")} →
-        </Link>
+        <span className="poster__weight">{product.weight}</span>
+        <div className="poster__cap">
+          <p className="eyebrow">{product.category[lang]}</p>
+          <h3>{product.name[lang]}</h3>
+        </div>
       </div>
-    </article>
+      <div className="poster__panel">
+        <p className="eyebrow">{product.category[lang]}</p>
+        <h3 className="poster__title">{product.name[lang]}</h3>
+        <div className="poster__scroll">
+          <div className="poster__track">
+            <BlockText blocks={product.body[lang]} />
+            <div aria-hidden="true">
+              <BlockText blocks={product.body[lang]} />
+            </div>
+          </div>
+        </div>
+        <div className="poster__cta">
+          <span>{t("actions.readStory")}</span>
+          <span>→</span>
+        </div>
+      </div>
+    </Link>
   );
 }
