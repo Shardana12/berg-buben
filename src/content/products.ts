@@ -28,7 +28,7 @@ const landjaeger: Product = {
   slug: "landjaeger-berg-buben-2er-80g",
   weight: "80 g · 2 × 40 g",
   publishedAt: "2026-03-23",
-  imageUrl: `${shopBaseUrl}/media/PLATZHALTER-landjaeger-berg-buben.jpg`,
+  imageUrl: "https://www.lebensmittel-sonderposten.de/media/52/a6/f0/1774363960/Berg_Buben_schwarzwaldhaus-21x-80g-1680g_1920x1920_(1).webp?ts=1774363960",
   shopUrl: `${shopBaseUrl}/landjaeger-berg-buben-2er-80g`,
   name: {
     de: "Landjäger Berg Buben 2er 80g",
