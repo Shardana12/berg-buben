@@ -5,8 +5,8 @@
   --fir: #1f3a2e;
   --fir-deep: #16281f;
   --fir-darker: #112019;
-  --rost: #a6412a;
-  --rost-deep: #8a3421;
+  --rost: #f13106;
+  --rost-deep: #f13106;
   --kohle: #221e1a;
   --moss: #6e7d5b;
   --brass: #c79a52;
@@ -265,7 +265,7 @@ main {
 .hero::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: clamp(0px, 30vw, 480px);
   right: 0;
   margin-inline: auto;
   top: 44%;
@@ -305,7 +305,7 @@ main {
   max-width: 1760px;
   margin: 0 auto;
   padding: clamp(3.5rem, 9vw, 7rem) clamp(1.5rem, 5vw, 4.5rem) clamp(5rem, 11vw, 8.5rem);
-  padding-left: clamp(1.25rem, 3vw, 2.5rem);
+  padding-left: clamp(1.25rem, 7vw, 10rem);
 }
 
 .hero__text {
@@ -1155,7 +1155,7 @@ main {
 /* Hero sun rays (same effect as the crest) */
 .hero__rays {
   position: absolute;
-  left: 50%;
+  left: calc(50% + clamp(0px, 30vw, 480px) / 2);
   top: 42%;
   width: min(960px, 120%);
   aspect-ratio: 1;
