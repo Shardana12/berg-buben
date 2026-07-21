@@ -265,11 +265,15 @@ main {
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0;
+  left: 50%;
+  top: 39%;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  background: url("/berg-buben-logo.png") no-repeat center 42%;
-  background-size: min(640px, 66%) auto;
-  opacity: 0.85;
+  width: min(620px, 66%);
+  aspect-ratio: 3 / 2;
+  background: #ebd3a7 url("/berg-buben-logo.png") no-repeat center / 86% auto;
+  border-radius: 46px;
+  box-shadow: 0 32px 66px rgba(0, 0, 0, 0.45), 0 10px 24px rgba(0, 0, 0, 0.3);
   pointer-events: none;
   animation: heroLogo 14s ease-in-out infinite alternate;
 }
@@ -904,10 +908,10 @@ main {
 
 @keyframes heroLogo {
   from {
-    transform: scale(1.04) translateY(12px);
+    transform: translate(-50%, -50%) scale(1.02) translateY(9px);
   }
   to {
-    transform: scale(1.12) translateY(-16px);
+    transform: translate(-50%, -50%) scale(1.05) translateY(-11px);
   }
 }
 
