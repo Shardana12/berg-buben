@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import type { Locale } from "../i18n";
 import { brand, hero, tagline } from "../config/site";
 import { withLocale } from "../lib/paths";
+import Seal from "./Seal";
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
@@ -22,6 +23,11 @@ export default function Footer() {
             {t("footer.shopLabel")} →
           </a>
         </div>
+
+        <div className="site-footer__crest">
+          <Seal caption={t("seal.text")} />
+        </div>
+
         <nav className="site-footer__links">
           <Link to={withLocale(lang, "/impressum")}>{t("footer.imprint")}</Link>
           <Link to={withLocale(lang, "/datenschutz")}>{t("footer.privacy")}</Link>

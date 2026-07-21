@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import type { Locale } from "../i18n";
 import { hero } from "../config/site";
-import Seal from "./Seal";
 
 export default function Hero() {
   const { t, i18n } = useTranslation();
@@ -18,9 +17,6 @@ export default function Hero() {
           <a className="btn btn--primary" href={hero.ctaHref} target="_blank" rel="noopener noreferrer">
             {t("actions.buyInShop")}
           </a>
-        </div>
-        <div className="hero__seal">
-          <Seal caption={t("seal.text")} />
         </div>
       </div>
     </section>

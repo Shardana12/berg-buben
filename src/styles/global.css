@@ -5,8 +5,8 @@
   --fir: #1f3a2e;
   --fir-deep: #16281f;
   --fir-darker: #112019;
-  --rost: #f13106;
-  --rost-deep: #f13106;
+  --rost: #a6412a;
+  --rost-deep: #8a3421;
   --kohle: #221e1a;
   --moss: #6e7d5b;
   --brass: #c79a52;
@@ -831,8 +831,9 @@ main {
 
 .site-footer__inner {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2.5rem;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
   padding-top: clamp(2.6rem, 5vw, 3.6rem);
   padding-bottom: 2rem;
 }
@@ -1273,5 +1274,33 @@ main {
   }
   .sorten__head .section__title {
     margin: 0 0 1.6rem;
+  }
+}
+
+/* Footer crest (moved from hero) */
+.site-footer__crest {
+  justify-self: center;
+}
+
+.site-footer__crest .crest {
+  gap: 0.7rem;
+}
+
+.site-footer__crest .crest__stage {
+  width: min(210px, 60vw);
+}
+
+.site-footer__crest .crest__caption {
+  font-size: 0.62rem;
+  max-width: 190px;
+}
+
+@media (max-width: 860px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+  .site-footer__crest {
+    justify-self: start;
   }
 }
