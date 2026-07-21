@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { Locale } from "../i18n";
 import { brand, hero, tagline } from "../config/site";
-import { withLocale } from "../lib/paths";
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
@@ -23,8 +21,12 @@ export default function Footer() {
           </a>
         </div>
         <nav className="site-footer__links">
-          <Link to={withLocale(lang, "/impressum")}>{t("footer.imprint")}</Link>
-          <Link to={withLocale(lang, "/datenschutz")}>{t("footer.privacy")}</Link>
+          <a href="https://www.lebensmittel-sonderposten.de/Information/Impressum/" target="_blank" rel="noopener noreferrer">
+            {t("footer.imprint")}
+          </a>
+          <a href="https://www.lebensmittel-sonderposten.de/Information/Datenschutz/" target="_blank" rel="noopener noreferrer">
+            {t("footer.privacy")}
+          </a>
         </nav>
       </div>
       <div className="wrap site-footer__base">

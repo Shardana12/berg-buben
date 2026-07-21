@@ -1,6 +1,6 @@
 import type { Locale } from "../i18n";
 
-export const shopBaseUrl = "https://www.lebensmittel-sonderposten.de";
+export const shopBaseUrl = "https://www.lebensmittel-sonderposten.de/blog/landjaeger-berg-buben";
 
 export const brand = "Berg Buben";
 

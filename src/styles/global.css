@@ -1061,3 +1061,93 @@ main {
     max-height: 240px;
   }
 }
+
+/* Hero crest — real logo split into parallax layers */
+.crest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.crest__stage {
+  position: relative;
+  width: min(320px, 82vw);
+  aspect-ratio: 728 / 310;
+}
+
+.crest__rays {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 150%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: repeating-conic-gradient(from 0deg, rgba(199, 154, 82, 0.16) 0deg 4deg, transparent 4deg 16deg);
+  -webkit-mask-image: radial-gradient(closest-side, #000 0%, #000 40%, transparent 72%);
+  mask-image: radial-gradient(closest-side, #000 0%, #000 40%, transparent 72%);
+  animation: crestRays 46s linear infinite;
+  pointer-events: none;
+}
+
+.crest__glow {
+  position: absolute;
+  inset: -14% -8%;
+  background: radial-gradient(closest-side, rgba(199, 154, 82, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.crest__layer {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  will-change: transform;
+}
+
+.crest__layer--back {
+  background-image: url("/berg-buben-emblem.png");
+  animation: crestBack 8s ease-in-out infinite alternate;
+}
+
+.crest__layer--front {
+  background-image: url("/berg-buben-emblem-front.png");
+  animation: crestFront 8s ease-in-out infinite alternate;
+}
+
+.crest__caption {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(239, 231, 214, 0.78);
+  text-align: center;
+  max-width: 220px;
+  line-height: 1.5;
+}
+
+@keyframes crestRays {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes crestBack {
+  from {
+    transform: translateY(2px) scale(1);
+  }
+  to {
+    transform: translateY(-3px) scale(1.015);
+  }
+}
+
+@keyframes crestFront {
+  from {
+    transform: translateY(-1px);
+  }
+  to {
+    transform: translateY(6px);
+  }
+}
