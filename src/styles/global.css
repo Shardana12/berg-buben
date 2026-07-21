@@ -472,7 +472,7 @@ main {
   left: 0;
   top: 0;
   z-index: 4;
-  background: var(--kohle);
+  background: var(--rost);
   color: var(--paper);
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -1190,4 +1190,58 @@ main {
 
 .legal a {
   color: var(--rost);
+}
+
+/* Product info (Zutaten / Nährwerte / Hersteller) */
+.prodinfo {
+  margin-top: 2.6rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.prodinfo h2 {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.2rem;
+}
+
+.prodinfo h3 {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--rost);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.prodinfo p {
+  margin: 0 0 0.8rem;
+  color: rgba(34, 30, 26, 0.85);
+  font-size: 0.98rem;
+}
+
+.nutri {
+  margin: 0.4rem 0 0.8rem;
+  max-width: 440px;
+}
+
+.nutri__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.nutri__row dt {
+  color: rgba(34, 30, 26, 0.7);
+  margin: 0;
+}
+
+.nutri__row dd {
+  margin: 0;
+  font-weight: 700;
 }

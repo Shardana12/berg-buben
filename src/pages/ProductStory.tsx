@@ -48,6 +48,36 @@ export default function ProductStory() {
           <div className="story__main">
             <ProductImage src={product.imageUrl} alt={product.name[lang]} className="story__image" />
             <BlockText blocks={product.body[lang]} />
+
+            {product.zutaten && (
+              <div className="prodinfo">
+                <h2>{lang === "de" ? "Produktinformationen" : "Product information"}</h2>
+
+                <h3>{lang === "de" ? "Zutaten" : "Ingredients"}</h3>
+                <p>{product.zutaten[lang]}</p>
+
+                {product.naehrwerte && (
+                  <>
+                    <h3>{lang === "de" ? "Nährwerte pro 100 g" : "Nutrition per 100 g"}</h3>
+                    <dl className="nutri">
+                      {product.naehrwerte[lang].map((n) => (
+                        <div className="nutri__row" key={n.label}>
+                          <dt>{n.label}</dt>
+                          <dd>{n.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </>
+                )}
+
+                {product.hersteller && (
+                  <>
+                    <h3>{lang === "de" ? "Hersteller" : "Producer"}</h3>
+                    <p>{product.hersteller}</p>
+                  </>
+                )}
+              </div>
+            )}
           </div>
 
           <aside className="story__aside">

@@ -10,6 +10,11 @@ export interface Fact {
   value: string;
 }
 
+export interface Nutrient {
+  label: string;
+  value: string;
+}
+
 export interface Product {
   slug: string;
   weight: string;
@@ -22,24 +27,27 @@ export interface Product {
   excerpt: Record<Locale, string>;
   facts: Record<Locale, Fact[]>;
   body: Record<Locale, Block[]>;
+  zutaten?: Record<Locale, string>;
+  naehrwerte?: Record<Locale, Nutrient[]>;
+  hersteller?: string;
 }
 
 const landjaegerFacts: Record<Locale, Fact[]> = {
   de: [
+    { label: "Fleisch", value: "Schwein & Rohschinken" },
     { label: "Form", value: "Eckig, paarweise" },
-    { label: "Farbe", value: "Dunkelrot bis schwarzbraun" },
-    { label: "Fleisch", value: "Rind & Schwein" },
-    { label: "Gewürze", value: "Kümmel, Pfeffer, Koriander" },
-    { label: "Verfahren", value: "Gepresst, geräuchert, luftgetrocknet" },
-    { label: "Haltbarkeit", value: "Wochen bis Monate, ohne Kühlung" },
+    { label: "Verfahren", value: "Geräuchert, luftgetrocknet" },
+    { label: "Würze", value: "u. a. mit Senf" },
+    { label: "Haltbarkeit", value: "Ohne Kühlung" },
+    { label: "Herkunft", value: "Schwarzwald, Gengenbach" },
   ],
   en: [
-    { label: "Shape", value: "Square, sold in pairs" },
-    { label: "Colour", value: "Dark red to blackish-brown" },
-    { label: "Meat", value: "Beef & pork" },
-    { label: "Spices", value: "Caraway, pepper, coriander" },
-    { label: "Process", value: "Pressed, smoked, air-dried" },
-    { label: "Keeps", value: "Weeks to months, no fridge" },
+    { label: "Meat", value: "Pork & raw ham" },
+    { label: "Shape", value: "Square, in pairs" },
+    { label: "Process", value: "Smoked, air-dried" },
+    { label: "Seasoning", value: "incl. mustard" },
+    { label: "Keeps", value: "No fridge needed" },
+    { label: "Origin", value: "Black Forest, Gengenbach" },
   ],
 };
 
@@ -48,9 +56,9 @@ const landjaegerBody: Record<Locale, Block[]> = {
     { type: "p", text: "Landjäger sind die ultimativen „Überlebenskünstler“ unter den Würsten. Man kann sie sich als eine Mischung aus einer Salami und einer festen Rohwurst vorstellen, die speziell für den Transport ohne Kühlung entwickelt wurde." },
     { type: "h", text: "Was macht sie aus?" },
     { type: "ul", items: [
-      "Form & Aussehen: Das markanteste Merkmal ist die eckige Form. Sie werden paarweise verkauft und sind meist dunkelrot bis fast schwarzbraun.",
-      "Zutaten: Klassisch bestehen sie aus Rind- und Schweinefleisch, Speck, Salz und Gewürzen (oft Kümmel, Pfeffer und Koriander).",
-      "Herstellung: Die Würste werden erst gepresst (daher die eckige Form), dann geräuchert und schließlich an der Luft getrocknet. Durch diesen Prozess verlieren sie Wasser und werden sehr fest.",
+      "Form & Aussehen: Das markanteste Merkmal ist die eckige Form. Sie werden paarweise verkauft und sind dunkelrot bis fast schwarzbraun.",
+      "Zutaten: Der Berg Buben Landjäger wird aus Schweinefleisch und geräuchertem Rohschinken hergestellt und unter anderem mit Senf gewürzt. Aus 122 g Schweinefleisch entstehen 100 g Landjäger.",
+      "Herstellung: Die Wurst wird erst gepresst (daher die eckige Form), dann geräuchert und schließlich an der Luft getrocknet. Durch diesen Prozess verliert sie Wasser und wird sehr fest.",
     ] },
     { type: "h", text: "Warum sind sie eckig?" },
     { type: "p", text: "Das ist kein Design-Gag, sondern pure Praktikabilität aus der Zeit vor dem Rucksack: Die eckige Form sorgte dafür, dass die Würste in der Hosentasche oder im Ranzen nicht hin- und herrollten und weniger Platz wegnahmen." },
@@ -68,9 +76,9 @@ const landjaegerBody: Record<Locale, Block[]> = {
     { type: "p", text: "Landjäger are the ultimate survival artists among sausages. Picture a cross between a salami and a firm dry-cured sausage – purpose-built to travel without refrigeration." },
     { type: "h", text: "What makes them special?" },
     { type: "ul", items: [
-      "Shape & appearance: their most distinctive trait is the square form. They are sold in pairs and are usually dark red to almost blackish-brown.",
-      "Ingredients: classically beef and pork, bacon, salt and spices (often caraway, pepper and coriander).",
-      "How they are made: the sausages are first pressed (hence the square shape), then smoked and finally air-dried. The process draws out water and makes them very firm.",
+      "Shape & appearance: the most distinctive trait is the square form. They are sold in pairs and are dark red to almost blackish-brown.",
+      "Ingredients: the Berg Buben Landjäger is made from pork and smoked raw ham, seasoned with mustard among other spices. It takes 122 g of pork to make 100 g of Landjäger.",
+      "How it is made: the sausage is first pressed (hence the square shape), then smoked and finally air-dried. The process draws out water and makes it very firm.",
     ] },
     { type: "h", text: "Why are they square?" },
     { type: "p", text: "It is not a design gimmick but pure practicality from the days before the backpack: the square shape kept the sausages from rolling around in a trouser pocket or satchel, and they took up less room." },
@@ -85,6 +93,34 @@ const landjaegerBody: Record<Locale, Block[]> = {
     { type: "p", text: "Fun fact: in some regions they are also called „Peitschenstecken“ (whip sticks) or simply „Paarwurst“ (pair sausage)." },
   ],
 };
+
+const landjaegerZutaten: Record<Locale, string> = {
+  de: "Schweinefleisch, Speck, Rohschinken (geräuchert), Speisesalz, Gewürze (u. a. SENF), Glucosesirup, Dextrose, Gewürze, Gewürzextrakte, Antioxidationsmittel: E301, Säuerungsmittel: E575, Geschmacksverstärker: E621, Konservierungsstoffe: E250, E252, essbare Hülle aus Rinderkollagen, Rauch. Kann Spuren von LAKTOSE und EI enthalten.",
+  en: "Pork, bacon, raw ham (smoked), salt, spices (incl. MUSTARD), glucose syrup, dextrose, spices, spice extracts, antioxidant: E301, acidity regulator: E575, flavour enhancer: E621, preservatives: E250, E252, edible casing of beef collagen, smoke. May contain traces of MILK and EGG.",
+};
+
+const landjaegerNaehrwerte: Record<Locale, Nutrient[]> = {
+  de: [
+    { label: "Brennwert", value: "2191 kJ / 511 kcal" },
+    { label: "Fett", value: "43,0 g" },
+    { label: "davon gesättigte Fettsäuren", value: "20,5 g" },
+    { label: "Kohlenhydrate", value: "1,5 g" },
+    { label: "davon Zucker", value: "1,0 g" },
+    { label: "Eiweiß", value: "20,5 g" },
+    { label: "Salz", value: "4,0 g" },
+  ],
+  en: [
+    { label: "Energy", value: "2191 kJ / 511 kcal" },
+    { label: "Fat", value: "43.0 g" },
+    { label: "of which saturates", value: "20.5 g" },
+    { label: "Carbohydrate", value: "1.5 g" },
+    { label: "of which sugars", value: "1.0 g" },
+    { label: "Protein", value: "20.5 g" },
+    { label: "Salt", value: "4.0 g" },
+  ],
+};
+
+const landjaegerHersteller = "Schwarzwaldhaus Schinken- und Wurstdelikatessen, 77723 Gengenbach";
 
 const minisalamiFacts: Record<Locale, Fact[]> = {
   de: [
@@ -139,11 +175,14 @@ export const products: Product[] = [
     name: { de: "Landjäger · 2 Stück", en: "Landjäger · 2 pieces" },
     category: { de: "Einzelpack", en: "Single pack" },
     excerpt: {
-      de: "Das klassische Paar zum Probieren: zwei eckig gepresste, geräucherte Landjäger.",
-      en: "The classic pair to try: two square-pressed, smoked Landjäger.",
+      de: "Das klassische Paar zum Probieren: geräucherte Landjäger aus Schweinefleisch und Rohschinken.",
+      en: "The classic pair to try: smoked Landjäger made from pork and raw ham.",
     },
     facts: landjaegerFacts,
     body: landjaegerBody,
+    zutaten: landjaegerZutaten,
+    naehrwerte: landjaegerNaehrwerte,
+    hersteller: landjaegerHersteller,
   },
   {
     slug: "landjaeger-21x-80g",
@@ -155,11 +194,14 @@ export const products: Product[] = [
     name: { de: "Landjäger · 21 × 80 g", en: "Landjäger · 21 × 80 g" },
     category: { de: "Display", en: "Display" },
     excerpt: {
-      de: "Das Original im 21er-Display: eckig gepresste, geräucherte Landjäger – haltbar ganz ohne Kühlung.",
-      en: "The original in a 21-piece display: pressed, smoked Landjäger – keeps with no fridge at all.",
+      de: "Das Original im 21er-Display: geräucherte Landjäger aus Schweinefleisch und Rohschinken – ohne Kühlung haltbar.",
+      en: "The original in a 21-piece display: smoked Landjäger from pork and raw ham – keeps with no fridge.",
     },
     facts: landjaegerFacts,
     body: landjaegerBody,
+    zutaten: landjaegerZutaten,
+    naehrwerte: landjaegerNaehrwerte,
+    hersteller: landjaegerHersteller,
   },
   {
     slug: "landjaeger-50x-80g",
@@ -176,6 +218,9 @@ export const products: Product[] = [
     },
     facts: landjaegerFacts,
     body: landjaegerBody,
+    zutaten: landjaegerZutaten,
+    naehrwerte: landjaegerNaehrwerte,
+    hersteller: landjaegerHersteller,
   },
   {
     slug: "landjaeger-100x-80g",
@@ -192,6 +237,9 @@ export const products: Product[] = [
     },
     facts: landjaegerFacts,
     body: landjaegerBody,
+    zutaten: landjaegerZutaten,
+    naehrwerte: landjaegerNaehrwerte,
+    hersteller: landjaegerHersteller,
   },
   {
     slug: "landjaeger-200x-80g",
@@ -203,11 +251,14 @@ export const products: Product[] = [
     name: { de: "Landjäger · 200 × 80 g", en: "Landjäger · 200 × 80 g" },
     category: { de: "Großpackung", en: "Bulk pack" },
     excerpt: {
-      de: "Die Gastronomie-Menge: 16 kg Schwarzwälder Landjäger, eckig gepresst und geräuchert.",
-      en: "The catering quantity: 16 kg of Black Forest Landjäger, pressed square and smoked.",
+      de: "Die Gastronomie-Menge: 16 kg geräucherte Landjäger aus Schweinefleisch und Rohschinken.",
+      en: "The catering quantity: 16 kg of smoked Landjäger from pork and raw ham.",
     },
     facts: landjaegerFacts,
     body: landjaegerBody,
+    zutaten: landjaegerZutaten,
+    naehrwerte: landjaegerNaehrwerte,
+    hersteller: landjaegerHersteller,
   },
   {
     slug: "minisalami-21x-80g",
