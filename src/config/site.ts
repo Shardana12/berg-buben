@@ -17,8 +17,8 @@ export const hero: HeroCopy = {
     en: "Provisions from the Black Forest",
   },
   title: {
-    de: "Würste, die überleben.",
-    en: "Sausages built to last.",
+    de: "Würste, die begeistern.",
+    en: "Sausages that delight.",
   },
   subtitle: {
     de: "Mit Liebe Hergestellt, über Buchenholz geräuchert, an der Schwarzwaldluft getrocknet. Handliche Rohwurst für die Wanderung, die Radtour und die schnelle Brotzeit.",
