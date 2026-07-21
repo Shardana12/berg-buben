@@ -52,18 +52,11 @@ export default function Datenschutz() {
             Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren und effizienten Betrieb der Website).
           </p>
 
-          <h2>Schriftarten (Google Fonts)</h2>
+          <h2>Schriftarten</h2>
           <p>
-            Zur einheitlichen Darstellung von Schriftarten nutzt diese Website Web Fonts, die von Google
-            bereitgestellt werden (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland).
-            Beim Aufruf einer Seite lädt Ihr Browser die benötigten Schriftarten von Google-Servern; dabei
-            erlangt Google Kenntnis darüber, dass über Ihre IP-Adresse unsere Website aufgerufen wurde.
-            Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer einheitlichen
-            Darstellung). Weitere Informationen finden Sie unter{" "}
-            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-              policies.google.com/privacy
-            </a>
-            .
+            Die auf dieser Website verwendeten Schriftarten werden lokal von unserem Server ausgeliefert.
+            Es werden dabei keine Verbindungen zu Servern Dritter (z. B. Google Fonts) hergestellt und keine
+            Daten an Dritte übertragen.
           </p>
 
           <h2>Cookies</h2>
