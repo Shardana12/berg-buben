@@ -402,20 +402,12 @@ main {
 
 /* Product posters (spotlight zoom on hover, no layout shift) */
 .grid {
-  position: relative;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   gap: clamp(1.2rem, 2.5vw, 1.9rem);
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 34px 2px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.grid::-webkit-scrollbar {
-  display: none;
+  width: max-content;
+  will-change: transform;
 }
 
 .poster {
@@ -1106,27 +1098,32 @@ main {
   position: relative;
 }
 
+.carousel__viewport {
+  overflow: hidden;
+  padding: 34px 0;
+}
+
 .carousel__arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 30;
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--line);
-  background: rgba(239, 230, 210, 0.94);
-  color: var(--kohle);
+  border: none;
+  background: var(--fir);
+  color: var(--paper);
   cursor: pointer;
-  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  box-shadow: 0 8px 22px rgba(17, 24, 20, 0.28);
+  transition: background-color 0.18s ease, transform 0.18s ease;
 }
 
 .carousel__arrow:hover {
   background: var(--rost);
-  color: var(--paper);
-  transform: translateY(-50%) scale(1.06);
+  transform: translateY(-50%) scale(1.08);
 }
 
 .carousel__arrow--prev {

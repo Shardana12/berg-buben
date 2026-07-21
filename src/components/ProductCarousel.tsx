@@ -4,39 +4,40 @@ import ProductCard from "./ProductCard";
 
 export default function ProductCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const pausedRef = useRef(false);
+  const offset = useRef(0);
+  const target = useRef(0);
+  const paused = useRef(false);
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let raf = 0;
-    const step = () => {
-      if (track) {
-        if (!pausedRef.current) {
-          track.scrollLeft -= 0.5;
-        }
-        const half = track.scrollWidth / 2;
-        if (half > 0) {
-          if (track.scrollLeft <= 0) {
-            track.scrollLeft += half;
-          } else if (track.scrollLeft >= half) {
-            track.scrollLeft -= half;
-          }
+    const frame = () => {
+      const half = track.scrollWidth / 2;
+      if (!paused.current && !reduce) {
+        target.current += 0.6;
+      }
+      offset.current += (target.current - offset.current) * 0.12;
+      if (half > 0) {
+        if (offset.current <= -half) {
+          offset.current += half;
+          target.current += half;
+        } else if (offset.current > 0) {
+          offset.current -= half;
+          target.current -= half;
         }
       }
-      raf = requestAnimationFrame(step);
+      track.style.transform = `translate3d(${offset.current}px, 0, 0)`;
+      raf = requestAnimationFrame(frame);
     };
-    raf = requestAnimationFrame(step);
+    raf = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(raf);
   }, []);
 
   const nudge = (dir: number) => {
-    const track = trackRef.current;
-    if (track) {
-      track.scrollBy({ left: dir * 264, behavior: "smooth" });
-    }
+    target.current -= dir * 264;
   };
 
   return (
@@ -53,21 +54,22 @@ export default function ProductCarousel() {
       </button>
 
       <div
-        className="grid"
-        ref={trackRef}
+        className="carousel__viewport"
         onMouseEnter={() => {
-          pausedRef.current = true;
+          paused.current = true;
         }}
         onMouseLeave={() => {
-          pausedRef.current = false;
+          paused.current = false;
         }}
       >
-        {products.map((p) => (
-          <ProductCard key={p.slug} product={p} />
-        ))}
-        {products.map((p) => (
-          <ProductCard key={`dup-${p.slug}`} product={p} />
-        ))}
+        <div className="grid" ref={trackRef}>
+          {products.map((p) => (
+            <ProductCard key={p.slug} product={p} />
+          ))}
+          {products.map((p) => (
+            <ProductCard key={`dup-${p.slug}`} product={p} />
+          ))}
+        </div>
       </div>
 
       <button
