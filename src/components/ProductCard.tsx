@@ -14,12 +14,22 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as Locale;
   const to = withLocale(lang, `/produkt/${product.slug}`);
+  const soldOutLabel = lang === "de" ? "Ausverkauft" : "Sold out";
 
   return (
-    <Link to={to} className="poster" aria-label={product.name[lang]}>
+    <Link
+      to={to}
+      className={`poster ${product.soldOut ? "is-soldout" : ""}`}
+      aria-label={product.name[lang]}
+    >
       <div className="poster__media">
         <ProductImage src={product.imageUrl} alt={product.name[lang]} />
         <span className="poster__weight">{product.weight}</span>
+        {product.soldOut && (
+          <div className="poster__soldout">
+            <span>{soldOutLabel}</span>
+          </div>
+        )}
         <div className="poster__cap">
           <p className="eyebrow">{product.category[lang]}</p>
           <h3>{product.name[lang]}</h3>
