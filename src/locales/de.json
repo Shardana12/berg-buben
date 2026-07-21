@@ -1,5 +1,8 @@
 {
-  "nav": { "home": "Start", "sorten": "Sorten" },
+  "nav": {
+    "home": "Start",
+    "sorten": "Sorten"
+  },
   "actions": {
     "buyInShop": "Im Shop kaufen",
     "readStory": "Zur Geschichte",
@@ -13,7 +16,9 @@
     "weight": "Gewicht",
     "story": "Die Geschichte"
   },
-  "seal": { "text": "Gepresst · Geräuchert · Getrocknet" },
+  "seal": {
+    "text": "Mit Liebe aus dem Schwarzwald"
+  },
   "footer": {
     "imprint": "Impressum",
     "privacy": "Datenschutz",

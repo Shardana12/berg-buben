@@ -1,5 +1,8 @@
 {
-  "nav": { "home": "Home", "sorten": "Varieties" },
+  "nav": {
+    "home": "Home",
+    "sorten": "Varieties"
+  },
   "actions": {
     "buyInShop": "Buy in the shop",
     "readStory": "Read the story",
@@ -13,7 +16,9 @@
     "weight": "Weight",
     "story": "The story"
   },
-  "seal": { "text": "Pressed - Smoked - Air-dried" },
+  "seal": {
+    "text": "Made with love from the Black Forest"
+  },
   "footer": {
     "imprint": "Legal notice",
     "privacy": "Privacy",
