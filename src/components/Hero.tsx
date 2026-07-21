@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero__rays" aria-hidden="true" />
-      <div className="wrap hero__inner">
+      <div className="hero__inner">
         <div className="hero__text">
           <p className="eyebrow">{hero.eyebrow[lang]}</p>
           <h1 className="hero__title">{hero.title[lang]}</h1>
