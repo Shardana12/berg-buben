@@ -5,8 +5,8 @@
   --fir: #1f3a2e;
   --fir-deep: #16281f;
   --fir-darker: #112019;
-  --rost: #a6412a;
-  --rost-deep: #d63410;
+  --rost: #f13106;
+  --rost-deep: #f13106;
   --kohle: #221e1a;
   --moss: #6e7d5b;
   --brass: #c79a52;
@@ -719,8 +719,9 @@ main {
 
 .story__image {
   width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
   background: var(--fir);
   margin-bottom: 2rem;
 }
