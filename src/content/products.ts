@@ -126,7 +126,7 @@ const minisalamiFacts: Record<Locale, Fact[]> = {
   de: [
     { label: "Art", value: "Minisalami" },
     { label: "Fleisch", value: "Schwein" },
-    { label: "Verfahren", value: "Luftgetrocknet" },
+    { label: "Verfahren", value: "Gereift, kalt geräuchert" },
     { label: "Verpackung", value: "Einzeln vakuumiert" },
     { label: "Stück", value: "21 × 80 g" },
     { label: "Haltbarkeit", value: "Ohne Kühlung" },
@@ -134,7 +134,7 @@ const minisalamiFacts: Record<Locale, Fact[]> = {
   en: [
     { label: "Type", value: "Mini salami" },
     { label: "Meat", value: "Pork" },
-    { label: "Process", value: "Air-dried" },
+    { label: "Process", value: "Matured, cold-smoked" },
     { label: "Packaging", value: "Individually vacuum-sealed" },
     { label: "Pieces", value: "21 × 80 g" },
     { label: "Keeps", value: "No fridge needed" },
@@ -143,7 +143,7 @@ const minisalamiFacts: Record<Locale, Fact[]> = {
 
 const minisalamiBody: Record<Locale, Block[]> = {
   de: [
-    { type: "p", text: "Die Minisalami vom Schwein ist der handliche Klassiker für zwischendurch: luftgetrocknet, herzhaft gewürzt und einzeln vakuumiert." },
+    { type: "p", text: "Die Minisalami vom Schwein ist der handliche Klassiker für zwischendurch: kalt geräuchert, herzhaft gewürzt und einzeln vakuumiert." },
     { type: "h", text: "Perfekt für unterwegs" },
     { type: "p", text: "Ob Wanderung, Büro oder schnelle Brotzeit – die Minisalami braucht keine Kühlung und ist sofort snackbereit." },
     { type: "ul", items: [
@@ -153,7 +153,7 @@ const minisalamiBody: Record<Locale, Block[]> = {
     ] },
   ],
   en: [
-    { type: "p", text: "The pork mini salami is the handy classic for in between: air-dried, heartily spiced and individually vacuum-sealed." },
+    { type: "p", text: "The pork mini salami is the handy classic for in between: cold-smoked, heartily spiced and individually vacuum-sealed." },
     { type: "h", text: "Perfect on the go" },
     { type: "p", text: "Whether hiking, at the office or for a quick bite – the mini salami needs no fridge and is ready to snack straight away." },
     { type: "ul", items: [
@@ -163,6 +163,34 @@ const minisalamiBody: Record<Locale, Block[]> = {
     ] },
   ],
 };
+
+const minisalamiZutaten: Record<Locale, string> = {
+  de: "Schweinefleisch, Speisesalz, Gewürze (enthält SENF), Rote Bete, Dextrose, Glukosesirup, Aroma, Antioxidationsmittel: Natriumascorbat (E 301), Konservierungsstoff: Natriumnitrit (E 250), Reifungskulturen, Rauch. Kann Spuren von LAKTOSE enthalten.",
+  en: "Pork, salt, spices (contains MUSTARD), beetroot, dextrose, glucose syrup, flavouring, antioxidant: sodium ascorbate (E 301), preservative: sodium nitrite (E 250), maturing cultures, smoke. May contain traces of MILK.",
+};
+
+const minisalamiNaehrwerte: Record<Locale, Nutrient[]> = {
+  de: [
+    { label: "Brennwert", value: "1664 kJ / 402 kcal" },
+    { label: "Fett", value: "34,5 g" },
+    { label: "davon gesättigte Fettsäuren", value: "12,8 g" },
+    { label: "Kohlenhydrate", value: "1,5 g" },
+    { label: "davon Zucker", value: "0,7 g" },
+    { label: "Eiweiß", value: "21,1 g" },
+    { label: "Salz", value: "2,7 g" },
+  ],
+  en: [
+    { label: "Energy", value: "1664 kJ / 402 kcal" },
+    { label: "Fat", value: "34.5 g" },
+    { label: "of which saturates", value: "12.8 g" },
+    { label: "Carbohydrate", value: "1.5 g" },
+    { label: "of which sugars", value: "0.7 g" },
+    { label: "Protein", value: "21.1 g" },
+    { label: "Salt", value: "2.7 g" },
+  ],
+};
+
+const minisalamiHersteller = "Hergestellt für Hapex GmbH, Marburger Straße 127, 35396 Gießen, Deutschland";
 
 export const products: Product[] = [
   {
@@ -270,11 +298,14 @@ export const products: Product[] = [
     name: { de: "Minisalami · 21 × 80 g", en: "Mini salami · 21 × 80 g" },
     category: { de: "Snack", en: "Snack" },
     excerpt: {
-      de: "Luftgetrocknete Minisalami vom Schwein – der schnelle, herzhafte Snack für unterwegs.",
-      en: "Air-dried pork mini salami – the quick, hearty snack for on the go.",
+      de: "Kalt geräucherte Minisalami vom Schwein – der schnelle, herzhafte Snack für unterwegs.",
+      en: "Cold-smoked pork mini salami – the quick, hearty snack for on the go.",
     },
     facts: minisalamiFacts,
     body: minisalamiBody,
+    zutaten: minisalamiZutaten,
+    naehrwerte: minisalamiNaehrwerte,
+    hersteller: minisalamiHersteller,
   },
 ];
 
