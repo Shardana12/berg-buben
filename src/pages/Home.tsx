@@ -14,10 +14,16 @@ export default function Home() {
       <Seo lang={lang} title={tagline[lang]} description={tagline[lang]} path="/" />
       <Hero />
       <section id="sorten" className="section">
-        <div className="wrap">
-          <p className="eyebrow">{t("home.sortenEyebrow")}</p>
-          <h2 className="section__title">{t("home.sortenTitle")}</h2>
-          <ProductCarousel />
+        <div className="wrap sorten">
+          <div className="sorten__head">
+            <p className="eyebrow">{t("home.sortenEyebrow")}</p>
+            <h2 className="section__title">
+              {lang === "de" ? "Würste, die begeistern" : "Sausages that delight"}
+            </h2>
+          </div>
+          <div className="sorten__carousel">
+            <ProductCarousel />
+          </div>
         </div>
       </section>
     </>

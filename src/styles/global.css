@@ -1246,3 +1246,32 @@ main {
   margin: 0;
   font-weight: 700;
 }
+
+/* Sorten section: heading beside the carousel */
+.sorten {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+.sorten__head .eyebrow {
+  margin-bottom: 0.9rem;
+}
+
+.sorten__head .section__title {
+  margin: 0;
+}
+
+.sorten__carousel {
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .sorten {
+    grid-template-columns: 1fr;
+  }
+  .sorten__head .section__title {
+    margin: 0 0 1.6rem;
+  }
+}
