@@ -267,10 +267,9 @@ main {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: url("/berg-buben-logo.png") no-repeat center;
-  background-size: min(720px, 72%) auto;
-  opacity: 0.88;
-  filter: brightness(0.5) saturate(0.85);
+  background: url("/berg-buben-logo.png") no-repeat center 42%;
+  background-size: min(640px, 66%) auto;
+  opacity: 0.85;
   pointer-events: none;
   animation: heroLogo 14s ease-in-out infinite alternate;
 }
@@ -282,7 +281,7 @@ main {
   right: 0;
   bottom: 0;
   z-index: 2;
-  height: 190px;
+  height: 130px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200' preserveAspectRatio='none'%3E%3Cpath fill='%23112019' d='M0 200 L0 128 L110 70 L230 118 L350 55 L470 112 L590 42 L720 104 L840 60 L965 116 L1085 62 L1205 110 L1320 58 L1440 104 L1440 200 Z'/%3E%3Cpath fill='%230d1a14' opacity='0.85' d='M0 200 L0 160 L150 118 L300 158 L440 120 L590 160 L740 122 L880 158 L1020 124 L1160 160 L1300 126 L1440 158 L1440 200 Z'/%3E%3C/svg%3E");
   background-size: cover;
   background-position: bottom;
