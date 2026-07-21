@@ -130,6 +130,22 @@ const minisalamiBody: Record<Locale, Block[]> = {
 
 export const products: Product[] = [
   {
+    slug: "landjaeger-2er",
+    weight: "80 g · 2 Stück",
+    publishedAt: "2026-03-23",
+    imageUrl: "https://www.lebensmittel-sonderposten.de/thumbnail/1f/b9/67/1784622876/Schwarzwlder%20Landjger%20geruchert%202-MP_800x800.png?ts=1784622877",
+    shopUrl: "https://www.lebensmittel-sonderposten.de/Schwarzwaelder-Landjaeger-geraeuchert-2-Stueck-MHD-12.08.26/SW641819",
+    soldOut: false,
+    name: { de: "Landjäger · 2 Stück", en: "Landjäger · 2 pieces" },
+    category: { de: "Einzelpack", en: "Single pack" },
+    excerpt: {
+      de: "Das klassische Paar zum Probieren: zwei eckig gepresste, geräucherte Landjäger.",
+      en: "The classic pair to try: two square-pressed, smoked Landjäger.",
+    },
+    facts: landjaegerFacts,
+    body: landjaegerBody,
+  },
+  {
     slug: "landjaeger-21x-80g",
     weight: "21 × 80 g · 1,68 kg",
     publishedAt: "2026-03-23",
@@ -141,6 +157,22 @@ export const products: Product[] = [
     excerpt: {
       de: "Das Original im 21er-Display: eckig gepresste, geräucherte Landjäger – haltbar ganz ohne Kühlung.",
       en: "The original in a 21-piece display: pressed, smoked Landjäger – keeps with no fridge at all.",
+    },
+    facts: landjaegerFacts,
+    body: landjaegerBody,
+  },
+  {
+    slug: "landjaeger-50x-80g",
+    weight: "50 × 80 g · 4 kg",
+    publishedAt: "2026-03-23",
+    imageUrl: "https://www.lebensmittel-sonderposten.de/thumbnail/59/7f/70/1773674686/Berg_Buben_schwarzwaldhaus-50x-80g-4000g_front_1920x1920.jpg?ts=1773674690",
+    shopUrl: "https://www.lebensmittel-sonderposten.de/50x-Schwarzwaelder-Berg-Buben-Landjaeger-geraeuchert-2er-80g-4000g-MHD-12.09.26/SW642827",
+    soldOut: false,
+    name: { de: "Landjäger · 50 × 80 g", en: "Landjäger · 50 × 80 g" },
+    category: { de: "Großpackung", en: "Bulk pack" },
+    excerpt: {
+      de: "Der herzhafte Schwarzwald-Snack im 4-kg-Karton – ideal für Kiosk, Kantine und Vorrat.",
+      en: "The hearty Black Forest snack in a 4 kg box – ideal for kiosk, canteen and stocking up.",
     },
     facts: landjaegerFacts,
     body: landjaegerBody,

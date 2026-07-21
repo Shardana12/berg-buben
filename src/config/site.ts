@@ -21,8 +21,8 @@ export const hero: HeroCopy = {
     en: "Sausages built to last.",
   },
   subtitle: {
-    de: "Eckig gepresst, über Buchenholz geräuchert, an der Schwarzwaldluft getrocknet. Handliche Rohwurst für die Wanderung, die Radtour und die schnelle Brotzeit.",
-    en: "Pressed square, smoked over beech wood, dried in Black Forest air. Hand-sized dry sausage for the trail, the bike tour and a quick bite.",
+    de: "Mit Liebe Hergestellt, über Buchenholz geräuchert, an der Schwarzwaldluft getrocknet. Handliche Rohwurst für die Wanderung, die Radtour und die schnelle Brotzeit.",
+    en: "Made with Love, smoked over beech wood, dried in Black Forest air. Hand-sized dry sausage for the trail, the bike tour and a quick bite.",
   },
   ctaHref: shopBaseUrl,
 };
