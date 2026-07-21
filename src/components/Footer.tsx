@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="wrap site-footer__inner">
         <div className="site-footer__brand">
           <span className="wordmark wordmark--footer">
-            <span className="wordmark__peak">▲</span>
+            <img className="wordmark__logo" src="/berg-buben-emblem.png" alt="" aria-hidden="true" />
             <span className="wordmark__name">{brand}</span>
           </span>
           <p>{tagline[lang]}</p>
