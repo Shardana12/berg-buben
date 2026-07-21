@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://berg-buben.de/sitemap.xml
