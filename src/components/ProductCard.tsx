@@ -5,6 +5,7 @@ import type { Product } from "../content/products";
 import { withLocale } from "../lib/paths";
 import ProductImage from "./ProductImage";
 import BlockText from "./BlockText";
+import { useSoldOut } from "../lib/stock";
 
 interface ProductCardProps {
   product: Product;
@@ -14,18 +15,19 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as Locale;
   const to = withLocale(lang, `/produkt/${product.slug}`);
+  const soldOut = useSoldOut(product);
   const soldOutLabel = lang === "de" ? "Ausverkauft" : "Sold out";
 
   return (
     <Link
       to={to}
-      className={`poster ${product.soldOut ? "is-soldout" : ""}`}
+      className={`poster ${soldOut ? "is-soldout" : ""}`}
       aria-label={product.name[lang]}
     >
       <div className="poster__media">
         <ProductImage src={product.imageUrl} alt={product.name[lang]} />
         <span className="poster__weight">{product.weight}</span>
-        {product.soldOut && (
+        {soldOut && (
           <div className="poster__soldout">
             <span>{soldOutLabel}</span>
           </div>
