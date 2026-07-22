@@ -321,22 +321,52 @@ main {
   overflow: hidden;
 }
 
-.hero::before {
-  content: "";
+.hero__badge-stage {
   position: absolute;
   left: clamp(0px, 30vw, 480px);
   right: 0;
   margin-inline: auto;
   top: 44%;
-  transform: translateY(-50%);
   z-index: 1;
   width: min(620px, 66%);
   aspect-ratio: 3 / 2;
-  background: #ebd3a7 url("/berg-buben-logo.png") no-repeat center / 86% auto;
   border-radius: 46px;
   box-shadow: 0 32px 66px rgba(0, 0, 0, 0.45), 0 10px 24px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
+  transform: translateY(-50%);
   animation: heroLogo 14s ease-in-out infinite alternate;
+}
+
+.hero__badge {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #ebd3a7;
+  border-radius: 46px;
+  overflow: hidden;
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.35s ease;
+}
+
+.hero__badge-img {
+  width: 86%;
+  height: auto;
+  transition: transform 1.2s ease-out;
+}
+
+.hero__badge:hover .hero__badge-img {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__badge-stage {
+    animation: none;
+  }
+
+  .hero__badge,
+  .hero__badge-img {
+    transition: none;
+  }
 }
 
 .hero::after {
@@ -365,11 +395,13 @@ main {
   margin: 0 auto;
   padding: clamp(3.5rem, 9vw, 7rem) clamp(1.5rem, 5vw, 4.5rem) clamp(5rem, 11vw, 8.5rem);
   padding-left: clamp(1.25rem, 7vw, 10rem);
+  pointer-events: none;
 }
 
 .hero__text {
   max-width: 42rem;
   animation: rise 0.7s ease both;
+  pointer-events: auto;
 }
 
 .hero .eyebrow {
