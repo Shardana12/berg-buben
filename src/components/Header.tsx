@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { Locale } from "../i18n";
-import { brand } from "../config/site";
+import { brand, ticker } from "../config/site";
 import { withLocale } from "../lib/paths";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -24,6 +24,20 @@ export default function Header() {
 
   return (
     <header className={`site-header ${hidden ? "is-hidden" : ""}`}>
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker__track">
+          <div className="ticker__group">
+            {ticker[lang].map((word, i) => (
+              <span className="ticker__item" key={`a-${i}`}>{word}</span>
+            ))}
+          </div>
+          <div className="ticker__group">
+            {ticker[lang].map((word, i) => (
+              <span className="ticker__item" key={`b-${i}`}>{word}</span>
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="wrap site-header__inner">
         <Link to={withLocale(lang, "/")} className="brand-logo" aria-label={brand}>
           <img src="/berg-buben-logo.png" alt={brand} />

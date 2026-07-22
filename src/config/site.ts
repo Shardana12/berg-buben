@@ -32,6 +32,11 @@ export const tagline: Record<Locale, string> = {
   en: "Tasty sausage from the Black Forest",
 };
 
+export const ticker: Record<Locale, string[]> = {
+  de: ["Wurst", "Schinken", "Dosen", "Salami", "Landjäger", "Speck", "Geräuchertes", "Schwarzwälder Spezialitäten"],
+  en: ["Sausage", "Ham", "Tins", "Salami", "Landjäger", "Bacon", "Smoked", "Black Forest Specialities"],
+};
+
 interface Contact {
   company: string;
   owner: string;
