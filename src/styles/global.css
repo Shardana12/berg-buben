@@ -110,7 +110,7 @@ main {
 .ticker__track {
   display: flex;
   width: max-content;
-  animation: tickerScroll 30s linear infinite;
+  animation: tickerScroll 120s linear infinite;
   will-change: transform;
 }
 

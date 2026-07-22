@@ -9,6 +9,8 @@ import LanguageSwitcher from "./LanguageSwitcher";
 export default function Header() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as Locale;
+  const words = ticker[lang];
+  const strip = Array.from({ length: words.length * 4 }, (_, i) => words[i % words.length]);
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
@@ -27,12 +29,12 @@ export default function Header() {
       <div className="ticker" aria-hidden="true">
         <div className="ticker__track">
           <div className="ticker__group">
-            {ticker[lang].map((word, i) => (
+            {strip.map((word, i) => (
               <span className="ticker__item" key={`a-${i}`}>{word}</span>
             ))}
           </div>
           <div className="ticker__group">
-            {ticker[lang].map((word, i) => (
+            {strip.map((word, i) => (
               <span className="ticker__item" key={`b-${i}`}>{word}</span>
             ))}
           </div>
