@@ -1,8 +1,20 @@
 export default async function handler(req, res) {
+  const debug = req.query.debug === "1";
   const base = process.env.SHOPWARE_STORE_API_URL;
   const key = process.env.SHOPWARE_ACCESS_KEY;
 
+  const diag = {
+    hasUrl: Boolean(base),
+    url: base || null,
+    hasKey: Boolean(key),
+    keyLength: key ? key.length : 0,
+  };
+
   if (!base || !key) {
+    if (debug) {
+      res.status(200).json({ note: "missing env vars", diag });
+      return;
+    }
     res.status(200).json({});
     return;
   }
@@ -13,14 +25,22 @@ export default async function handler(req, res) {
     .map((value) => value.trim())
     .filter((value) => /^SW\d+$/i.test(value))
     .slice(0, 50);
+  diag.numbers = numbers;
 
   if (numbers.length === 0) {
+    if (debug) {
+      res.status(200).json({ note: "no valid numbers", diag });
+      return;
+    }
     res.status(200).json({});
     return;
   }
 
+  const endpoint = `${base.replace(/\/+$/, "")}/store-api/product`;
+  diag.endpoint = endpoint;
+
   try {
-    const upstream = await fetch(`${base.replace(/\/+$/, "")}/store-api/product`, {
+    const upstream = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,15 +54,23 @@ export default async function handler(req, res) {
       }),
     });
 
-    if (!upstream.ok) {
-      res.status(200).json({});
-      return;
+    diag.upstreamStatus = upstream.status;
+    diag.upstreamOk = upstream.ok;
+
+    const text = await upstream.text();
+    diag.bodySnippet = text.slice(0, 1500);
+
+    let data = {};
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = {};
     }
 
-    const data = await upstream.json();
     const elements = Array.isArray(data.elements) ? data.elements : [];
-    const map = {};
+    diag.elementsCount = elements.length;
 
+    const map = {};
     for (const element of elements) {
       if (!element || typeof element.productNumber !== "string") {
         continue;
@@ -56,9 +84,19 @@ export default async function handler(req, res) {
       map[element.productNumber] = soldOut;
     }
 
+    if (debug) {
+      res.status(200).json({ map, diag });
+      return;
+    }
+
     res.setHeader("Cache-Control", "public, s-maxage=60, stale-while-revalidate=300");
     res.status(200).json(map);
-  } catch {
+  } catch (error) {
+    diag.error = String(error);
+    if (debug) {
+      res.status(200).json({ note: "fetch failed", diag });
+      return;
+    }
     res.status(200).json({});
   }
 }
