@@ -2,12 +2,14 @@ export default async function handler(req, res) {
   const debug = req.query.debug === "1";
   const base = process.env.SHOPWARE_STORE_API_URL;
   const key = process.env.SHOPWARE_ACCESS_KEY;
+  const proxySecret = process.env.SHOPWARE_PROXY_SECRET;
 
   const diag = {
     hasUrl: Boolean(base),
     url: base || null,
     hasKey: Boolean(key),
     keyLength: key ? key.length : 0,
+    hasProxySecret: Boolean(proxySecret),
   };
 
   if (!base || !key) {
@@ -39,17 +41,22 @@ export default async function handler(req, res) {
   const endpoint = `${base.replace(/\/+$/, "")}/store-api/product`;
   diag.endpoint = endpoint;
 
+  const headers = {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    "Accept-Language": "de-DE,de;q=0.9",
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "sw-access-key": key,
+  };
+  if (proxySecret) {
+    headers["x-bb-proxy"] = proxySecret;
+  }
+
   try {
     const upstream = await fetch(endpoint, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Accept-Language": "de-DE,de;q=0.9",
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-        "sw-access-key": key,
-      },
+      headers,
       body: JSON.stringify({
         limit: numbers.length,
         filter: [{ type: "equalsAny", field: "productNumber", value: numbers }],
