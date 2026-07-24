@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { Locale } from "../i18n";
-import { getProduct } from "../content/products";
+import { useProductBySlug } from "../lib/products";
 import { withLocale } from "../lib/paths";
 import Seo from "../components/Seo";
 import BlockText from "../components/BlockText";
@@ -12,10 +12,10 @@ export default function ProductStory() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as Locale;
   const { slug } = useParams();
-  const product = slug ? getProduct(slug) : undefined;
+  const { product, loaded } = useProductBySlug(slug);
 
   if (!product) {
-    return <NotFound />;
+    return loaded ? <NotFound /> : null;
   }
 
   const published = new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-GB", {

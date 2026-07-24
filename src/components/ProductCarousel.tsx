@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
-import { products } from "../content/products";
+import { useProducts } from "../lib/products";
 import ProductCard from "./ProductCard";
 
 export default function ProductCarousel() {
+  const products = useProducts();
   const trackRef = useRef<HTMLDivElement>(null);
   const offset = useRef(0);
   const target = useRef(0);
